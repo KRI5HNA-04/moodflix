@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react'
 import { LoaderOne } from "./components/ui/loader";
 
 import './index.css'
+import MovieCard from "./components/MovieCard";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -78,20 +79,16 @@ const App = () => {
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
-        <section>
+        <section className="all-movies">
           <h2 className="mt-[40px]">All Movies</h2>
           {isLoading ? (
             <LoaderOne />
           ) : errorMessage ? (
             <p className="text-red-500">Failed to fetch the movies</p>
           ) : (
-            <ul className="grid grid-cols-3 gap-x-8 gap-y-8 place-content-center">
+            <ul>
               {movieList.map((movie) => (
-                <li key={movie.id} className="text-white">
-                  {/* <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" /> */}
-                  <h3>{movie.title}</h3>
-                  {/* <p>{movie.overview}</p> */}
-                </li>
+                <MovieCard key={movie.id} movie={movie}/>
               ))}
             </ul>
           )}
