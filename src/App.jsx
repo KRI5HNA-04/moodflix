@@ -3,6 +3,11 @@ import Search from "./components/Search";
 import {useEffect, useState} from 'react'
 import { LoaderOne } from "./components/ui/loader";
 
+import Silk from './components/ui/Silk';
+import './App.css'
+
+
+
 import './index.css'
 import MovieCard from "./components/MovieCard";
 
@@ -68,34 +73,35 @@ const App = () => {
   }, []);
 
   return (
-    <main className="hero-background">
-      <div className="pattern"/>
-
-      <div className="wrapper">
-        <header>
-          <img src="hero.png" alt="hero-banner" />
-          <h1>Find <span className="text-gradient">Movies</span> You'll Enjoy Without Hassle</h1>
-
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-        </header>
-
-        <section className="all-movies">
-          <h2 className="mt-[40px]">All Movies</h2>
-          {isLoading ? (
-            <LoaderOne />
-          ) : errorMessage ? (
-            <p className="text-red-500">Failed to fetch the movies</p>
-          ) : (
-            <ul>
-              {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie}/>
-              ))}
-            </ul>
-          )}
-        </section>
-
+    <div className="app-root">
+      <div className="main-content">
+        <main>
+          <div className="wrapper">
+            <header className="hero-header">
+              <div className="silk-bg-container">
+                <Silk />
+              </div>
+              <h1>Find <span className="text-gradient">Movies</span> You'll Enjoy Without Hassle</h1>
+              <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+            </header>
+            <section className="all-movies">
+              <h2 className="mt-[40px]">All Movies</h2>
+              {isLoading ? (
+                <LoaderOne />
+              ) : errorMessage ? (
+                <p className="text-red-500">Failed to fetch the movies</p>
+              ) : (
+                <ul>
+                  {movieList.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie}/>
+                  ))}
+                </ul>
+              )}
+            </section>
+          </div>
+        </main>
       </div>
-  </main>
+    </div>
   );
 }
 

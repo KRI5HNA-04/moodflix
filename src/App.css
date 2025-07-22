@@ -1,11 +1,11 @@
-.hero-background {
+/* .hero-background {
     position: relative;
     min-height: 100vh;
     width: 100vw;
     overflow: hidden;
-}
+} */
 
-.hero-background::before {
+/* .hero-background::before {
     content: "";
     position: fixed;
     top: 0;
@@ -21,4 +21,47 @@
 .hero-background>* {
     position: relative;
     z-index: 1;
+} */
+
+.wrapper {
+    align-items: center;
+}
+
+.app-root {
+    position: relative;
+    min-height: 100vh;
+}
+
+.hero-header {
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    min-width: 1800px;
+    /* Adjust as needed for your hero section */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.silk-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-header>*:not(.silk-bg-container) {
+    position: relative;
+    z-index: 1;
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    /* padding-top: 300px; */
+    /* Optional: add padding-top if you want content to start below the Silk background */
 }
